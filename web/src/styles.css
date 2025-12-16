@@ -1,0 +1,86 @@
+:root{
+  --bg:#0b1020; --panel:#0f1731; --panel2:#0c132a; --stroke:#1c2a55;
+  --text:#eaf0ff; --muted:#9fb0dd; --accent:#7c5cff; --accent2:#00d4ff;
+  --good:#31d0aa; --warn:#ffb020; --bad:#ff5c7a;
+  --shadow: 0 10px 25px rgba(0,0,0,.35); --radius:16px; --radius2:22px;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{
+  margin:0; font-family:var(--font); color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(124,92,255,.35), transparent 60%),
+    radial-gradient(800px 500px at 95% 10%, rgba(0,212,255,.18), transparent 60%),
+    linear-gradient(180deg, var(--bg), #070b16 70%);
+}
+a{color:inherit; text-decoration:none}
+button,input,select,textarea{font-family:inherit}
+.container{display:flex; min-height:100vh}
+.sidebar{
+  width:290px; padding:18px 14px; position:sticky; top:0; height:100vh;
+  background: rgba(12,19,42,.72); border-right:1px solid var(--stroke); backdrop-filter: blur(10px);
+}
+.brand{display:flex; align-items:center; gap:10px; padding:10px 10px 16px}
+.logo{width:40px; height:40px; border-radius:14px; background: linear-gradient(135deg, rgba(124,92,255,.9), rgba(0,212,255,.6)); box-shadow:var(--shadow)}
+.brand h1{margin:0; font-size:14px; letter-spacing:.4px}
+.brand p{margin:0; font-size:12px; color:var(--muted)}
+.nav{display:flex; flex-direction:column; gap:6px; margin-top:8px}
+.nav a{padding:10px 12px; border-radius:14px; display:flex; align-items:center; gap:10px; border:1px solid transparent; color:rgba(234,240,255,.92)}
+.nav a:hover{background: rgba(124,92,255,.10); border-color: rgba(124,92,255,.25)}
+.nav a.active{background: rgba(124,92,255,.16); border-color: rgba(124,92,255,.35)}
+.nav .section{margin-top:14px; margin-bottom:6px; color:var(--muted); font-size:11px; padding:6px 10px; text-transform:uppercase; letter-spacing:.12em}
+.sidebarFooter{margin-top:auto; padding:12px 10px 10px; border-top:1px solid rgba(28,42,85,.65); color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:10px}
+.badge{padding:6px 10px; border:1px solid rgba(124,92,255,.35); border-radius:999px; background: rgba(124,92,255,.10); font-size:12px}
+.main{flex:1; padding:18px 18px 40px}
+.topbar{
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  padding:14px; border-radius:var(--radius2); background: rgba(15,23,49,.72);
+  border:1px solid rgba(28,42,85,.75); backdrop-filter: blur(10px);
+  box-shadow:0 8px 30px rgba(0,0,0,.25); position:sticky; top:12px; z-index:5;
+}
+.pageTitle{display:flex; flex-direction:column; gap:3px}
+.pageTitle h2{margin:0; font-size:16px; letter-spacing:.2px}
+.pageTitle span{color:var(--muted); font-size:12px}
+.topbarRight{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+.input,.select{
+  background: rgba(12,19,42,.8); border:1px solid rgba(28,42,85,.85); padding:10px 12px;
+  border-radius:14px; color:var(--text); outline:none;
+}
+textarea.input{min-height:120px; resize:vertical}
+.input::placeholder{color:rgba(159,176,221,.72)}
+.btn{
+  border:1px solid rgba(124,92,255,.45); background: rgba(124,92,255,.16); color:var(--text);
+  padding:10px 12px; border-radius:14px; cursor:pointer;
+}
+.btn:hover{background: rgba(124,92,255,.24)}
+.btnPrimary{border:none; background: linear-gradient(135deg, rgba(124,92,255,.92), rgba(0,212,255,.45)); box-shadow:0 10px 25px rgba(124,92,255,.18)}
+.btnGhost{background:transparent; border:1px solid rgba(28,42,85,.9)}
+.btnGhost:hover{background: rgba(28,42,85,.25)}
+.grid{margin-top:16px; display:grid; grid-template-columns: repeat(12,1fr); gap:12px}
+.card{
+  grid-column: span 3; padding:14px; border-radius:var(--radius2); background: rgba(15,23,49,.64);
+  border:1px solid rgba(28,42,85,.72); box-shadow:0 10px 30px rgba(0,0,0,.22);
+}
+.card h3{margin:0 0 6px; font-size:12px; color:var(--muted); font-weight:600; letter-spacing:.08em; text-transform:uppercase}
+.card .value{font-size:22px; font-weight:750; letter-spacing:.3px}
+.card .sub{margin-top:8px; color:var(--muted); font-size:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.pill{padding:4px 8px; border-radius:999px; font-size:12px; border:1px solid rgba(28,42,85,.8); background: rgba(12,19,42,.6); color:var(--muted)}
+.pill.good{color:rgba(49,208,170,.95); border-color:rgba(49,208,170,.35); background: rgba(49,208,170,.10)}
+.pill.warn{color:rgba(255,176,32,.95); border-color:rgba(255,176,32,.35); background: rgba(255,176,32,.10)}
+.pill.bad{color:rgba(255,92,122,.95); border-color:rgba(255,92,122,.35); background: rgba(255,92,122,.10)}
+.panel{
+  grid-column: span 12; padding:14px; border-radius:var(--radius2); background: rgba(15,23,49,.64);
+  border:1px solid rgba(28,42,85,.72); box-shadow:0 10px 30px rgba(0,0,0,.22);
+}
+.panelHeader{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; flex-wrap:wrap}
+.panelHeader h3{margin:0; font-size:14px}
+.panelHeader p{margin:0; color:var(--muted); font-size:12px}
+.table{width:100%; border-collapse:collapse; overflow:hidden; border-radius:16px}
+.table th,.table td{padding:10px; border-bottom:1px solid rgba(28,42,85,.55); text-align:left; font-size:13px}
+.table th{color:rgba(159,176,221,.9); font-size:12px; text-transform:uppercase; letter-spacing:.12em; font-weight:700; background: rgba(12,19,42,.55)}
+.table tr:hover td{background: rgba(124,92,255,.06)}
+.rowLink{cursor:pointer}
+.kbd{font-size:12px; color:var(--muted); border:1px solid rgba(28,42,85,.85); padding:3px 8px; border-radius:10px; background: rgba(12,19,42,.55)}
+.split{display:grid; grid-template-columns: 1.2fr .8fr; gap:12px}
+@media (max-width:1100px){.sidebar{display:none}.main{padding:14px}.card{grid-column: span 6}.split{grid-template-columns:1fr}}
+@media (max-width:640px){.card{grid-column: span 12}.topbar{flex-direction:column; align-items:stretch}}
