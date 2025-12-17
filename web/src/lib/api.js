@@ -49,6 +49,8 @@ export async function getMe(){
   return request("/me")
 }
 
+export { request }
+
 export const api = {
   request,
   getChannels: ()=>request("/client/channels"),
