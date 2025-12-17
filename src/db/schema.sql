@@ -121,3 +121,62 @@ CREATE TABLE IF NOT EXISTS joins (
   capi_error text
 );
 CREATE INDEX IF NOT EXISTS idx_joins_client_ts ON joins(client_id, ts DESC);
+
+
+-- ===== Phase A: Payments / Subscriptions (UPI manual) =====
+CREATE TABLE IF NOT EXISTS payments (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  client_id uuid NOT NULL REFERENCES clients(id) ON DELETE CASCADE,
+  plan text NOT NULL,
+  amount_inr int NOT NULL,
+  upi_id text NOT NULL,
+  upi_name text,
+  screenshot_url text,
+  txn_ref text,
+  status text NOT NULL DEFAULT 'PENDING' CHECK (status IN ('PENDING','APPROVED','REJECTED')),
+  note text,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  decided_at timestamptz
+);
+CREATE INDEX IF NOT EXISTS idx_payments_client_created ON payments(client_id, created_at DESC);
+
+-- ===== Phase B: AI LP Generator =====
+CREATE TABLE IF NOT EXISTS ai_generations (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  client_id uuid NOT NULL REFERENCES clients(id) ON DELETE CASCADE,
+  prompt text NOT NULL,
+  model text,
+  output_json jsonb,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS lp_versions (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  landing_page_id uuid NOT NULL REFERENCES landing_pages(id) ON DELETE CASCADE,
+  version int NOT NULL DEFAULT 1,
+  source text NOT NULL DEFAULT 'manual' CHECK (source IN ('manual','ai')),
+  html text,
+  config jsonb,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_lp_versions_lp_created ON lp_versions(landing_page_id, created_at DESC);
+
+-- ===== Phase C: Telegram Multi-bot (Universal + Dedicated) =====
+CREATE TABLE IF NOT EXISTS telegram_bots (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  client_id uuid REFERENCES clients(id) ON DELETE CASCADE,
+  type text NOT NULL DEFAULT 'UNIVERSAL' CHECK (type IN ('UNIVERSAL','DEDICATED')),
+  name text NOT NULL,
+  token_enc text NOT NULL,
+  is_active boolean NOT NULL DEFAULT true,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_telegram_bots_client ON telegram_bots(client_id, type);
+
+CREATE TABLE IF NOT EXISTS bot_channel_map (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  bot_id uuid NOT NULL REFERENCES telegram_bots(id) ON DELETE CASCADE,
+  channel_id uuid NOT NULL REFERENCES channels(id) ON DELETE CASCADE,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE(bot_id, channel_id)
+);

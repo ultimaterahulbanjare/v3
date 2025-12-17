@@ -13,6 +13,8 @@ export default function Icon({ name, size=18 }){
     case "users": return (<svg {...common}><path {...s} d="M17 21a4 4 0 0 0-8 0"/><path {...s} d="M13 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"/><path {...s} d="M21 21a3 3 0 0 0-5-2.2"/></svg>)
     case "approve": return (<svg {...common}><path {...s} d="M20 6 9 17l-5-5"/></svg>)
     case "logout": return (<svg {...common}><path {...s} d="M10 16l-4-4 4-4"/><path {...s} d="M6 12h12"/><path {...s} d="M14 4h6v16h-6"/></svg>)
+    case "money": return (<svg {...common}><path {...s} d="M12 1v22"/><path {...s} d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14.5a3.5 3.5 0 0 1 0 7H6"/><path {...s} d="M12 1v22"/></svg>)
+    case "bot": return (<svg {...common}><path {...s} d="M12 2v2"/><path {...s} d="M7 6h10a4 4 0 0 1 4 4v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a4 4 0 0 1 4-4Z"/><path {...s} d="M8 11h.01M16 11h.01"/><path {...s} d="M9 16h6"/></svg>)
     case "ai": return (<svg {...common}><path {...s} d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5L12 2Z"/></svg>)
     default: return (<svg {...common}><path {...s} d="M12 2v20M2 12h20"/></svg>)
   }

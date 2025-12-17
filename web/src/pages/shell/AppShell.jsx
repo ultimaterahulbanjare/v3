@@ -9,6 +9,8 @@ import LandingPageDetail from "../client/LandingPageDetail.jsx"
 import TrackingProfiles from "../client/TrackingProfiles.jsx"
 import Reports from "../client/Reports.jsx"
 import Logs from "../client/Logs.jsx"
+import Billing from "../client/Billing.jsx"
+import Bots from "../client/Bots.jsx"
 import Settings from "../client/Settings.jsx"
 import LpGenerator from "../client/LpGenerator.jsx"
 
@@ -30,6 +32,8 @@ export default function AppShell(){
           <Route path="tracking-profiles" element={<TrackingProfiles />} />
           <Route path="reports" element={<Reports />} />
           <Route path="logs" element={<Logs />} />
+          <Route path="bots" element={<Bots />} />
+          <Route path="billing" element={<Billing />} />
           <Route path="settings" element={<Settings />} />
           <Route path="" element={<Navigate to="dashboard" replace />} />
         </Routes>

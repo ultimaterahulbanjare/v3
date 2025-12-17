@@ -82,6 +82,9 @@ export default function ClientLogin(){
           </div>
         </div>
       </div>
+        <div style={{marginTop:10, fontSize:13, opacity:.85}}>
+          New here? <a href="/register">Create an account</a>
+        </div>
     </div>
   )
 }

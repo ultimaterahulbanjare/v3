@@ -2,6 +2,7 @@ import React from "react"
 import { Routes, Route, Navigate, useLocation } from "react-router-dom"
 import ClientLogin from "./pages/auth/ClientLogin.jsx"
 import OwnerLogin from "./pages/auth/OwnerLogin.jsx"
+import Register from "./pages/auth/Register.jsx"
 import AppShell from "./pages/shell/AppShell.jsx"
 import OwnerShell from "./pages/shell/OwnerShell.jsx"
 import { getAuth } from "./lib/auth.js"
@@ -18,6 +19,7 @@ export default function App(){
   return (
     <Routes>
       <Route path="/login" element={<ClientLogin />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/owner/login" element={<OwnerLogin />} />
 
       <Route path="/app/*" element={<RequireAuth role="client"><AppShell /></RequireAuth>} />

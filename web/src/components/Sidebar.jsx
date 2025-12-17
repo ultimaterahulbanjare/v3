@@ -22,6 +22,7 @@ export default function Sidebar(){
     { to:"/owner/dashboard", icon:"dashboard", label:"Dashboard" },
     { to:"/owner/clients", icon:"users", label:"Clients" },
     { to:"/owner/approvals", icon:"approve", label:"Approvals" },
+    { to:"/owner/payments", icon:"money", label:"Payments" },
     { section:"System" },
     { to:"/owner/logs", icon:"logs", label:"System Logs" },
     { to:"/owner/settings", icon:"settings", label:"Settings" },
@@ -33,11 +34,13 @@ export default function Sidebar(){
     { to:"/app/landing-pages", icon:"lp", label:"Landing Pages" },
     { section:"Tracking" },
     { to:"/app/channels", icon:"channels", label:"Channels" },
+    { to:"/app/bots", icon:"bot", label:"Telegram Bots" },
     { to:"/app/tracking-profiles", icon:"profile", label:"Tracking Profiles" },
     { section:"Insights" },
     { to:"/app/reports", icon:"reports", label:"Reports" },
     { to:"/app/logs", icon:"logs", label:"Logs" },
     { section:"Account" },
+    { to:"/app/billing", icon:"money", label:"Billing" },
     { to:"/app/settings", icon:"settings", label:"Settings" },
   ]
 
